@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Search</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/app_home.css')}}" >
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</head>
+<body>
+    <div class="header">Open Search</div>
+    <div class="chat-container">
+        <div class="chat-box">
+            <div class="chatbox" id="chatbox"></div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Type a message..." />
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            $("#user-input, #user-input2").keypress(function(event) {
+                if (event.which === 13) {
+                    if ($(this).attr('id') === 'user-input') sendMessage();
+                    else sendMessage2();
+                }
+            });
+        });
+
+        function sendMessage() {
+            let userMessage = $("#user-input").val();
+            if (!userMessage.trim()) return;
+            
+            $("#chatbox").append(`<div class='message user-message'><b>You:</b> ${userMessage}</div>`);
+            $("#user-input").val("").focus();
+            $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+            
+            $.ajax({
+                type: "POST",
+                url: "/ask",
+                contentType: "application/json",
+                data: JSON.stringify({ message: userMessage }),
+                success: function(response) {
+                    $("#chatbox").append(`<div class='message bot-message'><b>Bot:</b> ${response.reply}</div>`);
+                    $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error details:', textStatus, errorThrown);
+                    $("#chatbox").append(`<div class='message bot-message'><b>Error:</b> Failed to get response.</div>`);
+                }
+            });
+        }
+
+        
+    </script>
+</body>
+</html>
