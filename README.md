@@ -3,6 +3,8 @@
 ### Open Search - is a AI power chat bot which can answer any type of question.
 ### It uses natural language processing (NLP) to understand and generate human-like responses in conversations. Built on advanced models like gpt-3.5-turbo.
 
+#### This project is live now : https://open-search-ai.onrender.com/
+
 <img width="950" alt="image" src="https://github.com/user-attachments/assets/68782154-10eb-4f5a-b3da-93c778e62292" />
 
 
