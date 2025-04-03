@@ -46,20 +46,27 @@ body { font-family: Arial, sans-serif;
 }
 .input-area { 
     display: flex; 
-    padding: 10px; 
+    padding: 12px;  /* Increased padding */
     border-top: 1px solid #333; 
     background: #222; 
+    align-items: center;
+    gap: 10px; /* Add spacing between elements */
 }
-input { flex: 1; 
-    padding: 10px; 
+
+input { 
+    flex: 1; 
+    padding: 12px;  /* Increased padding */
     border: none; 
-    border-radius: 5px; 
+    border-radius: 8px; /* Rounded corners */
     outline: none; 
-    font-size: 16px; 
+    font-size: 18px; /* Slightly larger font */
     background: #333; 
     color: #fff; 
 }
+
 button { 
+    padding: 12px 18px;  /* Increased padding */
+    font-size: 18px;
     padding: 10px 15px; 
     margin-left: 10px; 
     border: none; 
@@ -88,3 +95,20 @@ button:hover {
     color: white; 
     align-self: flex-start;
 }
+
+pre {
+    background: #272822; /* Dark background */
+    color: #f8f8f2; /* Light text */
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+code {
+    font-size: 14px;
+    display: block;
+    white-space: pre-wrap;
+}
+
